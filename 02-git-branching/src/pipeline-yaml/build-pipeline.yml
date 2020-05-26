@@ -1,0 +1,35 @@
+# Build Pipeline for SQL Database
+
+trigger:
+- master
+
+pool:
+  name: Hosted VS2017
+  demands:
+  - msbuild
+  - visualstudio
+
+variables:
+  BuildConfiguration: 'Release'
+
+steps:
+- task: VSBuild@1
+  displayName: 'Build Data Warehouse'
+  inputs:
+    solution: src/sqldatabase/AdventureWorksDW.sln
+    configuration: '$(BuildConfiguration)'
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    SourceFolder: 'src/sqldatabase/AdventureWorksDW/bin/$(BuildConfiguration)'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    Contents: '**'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: SQLDW'
+  inputs:
+    ArtifactName: SQLDW
+    PathtoPublish: $(Build.ArtifactStagingDirectory)
+    TargetPath: 'SQLDW'
+    publishLocation: Container
