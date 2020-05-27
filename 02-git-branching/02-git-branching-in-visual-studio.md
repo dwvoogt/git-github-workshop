@@ -195,15 +195,15 @@ Hieronder staat het globale stappenplan. Mocht je in meer detail willen weten ho
 
 We hebben nu een branch (`hotfix-cci-initialen`) aangemaakt en hier code in staan die we graag willen integreren richting de `master` branch. De standaard-manier om een branch te integreren met een andere branch is met behulp van een zogenaamd *pull request*.
 
-26. Open de webbrowser, en browse naar [https://github.com/BITrainer-nl/git-github-workshop](https://github.com/BITrainer-nl/git-github-workshop)
-26. Schakel naar de tab **Pull Requests**
+28. Open de webbrowser, en browse naar [https://github.com/BITrainer-nl/git-github-workshop](https://github.com/BITrainer-nl/git-github-workshop)
+28. Schakel naar de tab **Pull Requests**
 
 GitHub laat je nu direct zien welke pull requests er momenteel actief zijn. Ook krijg je de melding dat je `hotfix-cci-initialen` kortgeleden bijgewerkt hebt, en of je hier wellicht een *pull request* mee wilt openen.
 
 ![Pull Requests in GitHub](img/devops-pull-requests.png)
 
-28. We gebruiken voor nu niet de *shortcut* (die je op meerdere plekken binnen GitHub zult tegenkomen). Klik in plaats daarvan op de groene knop **New pull request**
-28. Maak een *Pull Request* aan
+30. We gebruiken voor nu niet de *shortcut* (die je op meerdere plekken binnen GitHub zult tegenkomen). Klik in plaats daarvan op de groene knop **New pull request**
+30. Maak een *Pull Request* aan
     * **`hotfix-cci-initialen`** into `master`
     * Title & description zijn overgenomen van de laatste commit. Als je deze zinnig hebt ingevuld hoef je hier dus niets aan te veranderen
     * Merk op dat je expliciet *reviewers* en *work items* kunt toevoegen om je Pull Request context te geven
@@ -220,15 +220,15 @@ Vraag aan iemand anders binnen de training om een *review* te doen. Hiervoor ope
 
 ![Fill in review](img/PR-review-2.png)
 
-30. Nadat er een positieve review is gegeven, wordt de knop **Merge pull request** groen. Klik hierop om de Pull Request door te zetten.
+31. Nadat er een positieve review is gegeven, wordt de knop **Merge pull request** groen. Klik hierop om de Pull Request door te zetten.
 
 ![Merge pull request](img/merge-pr.png)
 
-31. Laat alle instellingen voor wat het is, en klik op **Confirm merge**. De Pull Request wordt nu doorgevoerd, en de wijzigingen van branch `hotfix-cci-initialen` worden doorgevoerd binnen de *collaboration* branch `master`.
+32. Laat alle instellingen voor wat het is, en klik op **Confirm merge**. De Pull Request wordt nu doorgevoerd, en de wijzigingen van branch `hotfix-cci-initialen` worden doorgevoerd binnen de *collaboration* branch `master`.
 
 Je krijgt ook direct de mogelijkheid om de branch te *verwijderen*. We gaan er later nog op in waarom je dit wel of niet zou doen, maar voor nu kiezen we ervoor om de branch - zoals voorgesteld - te verwijderen.
 
-32. Klik **Delete branch**
+33. Klik **Delete branch**
 
 ![Delete branch after succesful PR](img/delete-branch.png)
 
