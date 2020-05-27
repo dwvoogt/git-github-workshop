@@ -26,7 +26,7 @@ Branches kunnen ook weer samengevoegd worden. In het voorbeeld van hierboven bij
 
 ## Git 101 demo
 
-1. *Trainer* maakt een git repository aan op de machine `CI4BI-trainer`
+1. *Trainer* maakt een git repository aan
    * `git init voorbeeldrepo`
 1. *Trainer* voegt tekstbestand toe aan repo
    * `cd voorbeeldrepo`
@@ -34,10 +34,10 @@ Branches kunnen ook weer samengevoegd worden. In het voorbeeld van hierboven bij
 1. *Trainer* voert commit door
    * `git commit -m "Initiële commit"`
    * *-m is het argument voor "commit message"*
-1. *Trainer* opent Azure Repos in module 3 - *hier is nog geen repository!*
+1. *Trainer* opent GitHub en maakt een nieuwe repository aan - *hier is nog geen repository!*
    * Vooraf heeft de trainer de cursisten toegevoegd aan deze repository, anders hadden ze geen toegang gehad
-1. *Trainer* laat zien dat een bestaande (lokale) git repository naar Azure Repos gebracht kan worden
-1. *Cursisten* navigeren naar Azure Repos
+1. *Trainer* laat zien dat een bestaande (lokale) git repository naar GitHub gebracht kan worden
+1. *Cursisten* navigeren naar GitHub
 1. *Cursisten* doen een *clone* van de repository
 
 ## Uitleg "Three-tree architecture"
@@ -68,7 +68,7 @@ Git is in essentie gedecentraliseerd: elk van de repositories bestaat op zich, e
 
 Tegelijk is het wel handig om met elkaar af te spreken wat je als "De Waarheid" ziet. Binnen Git wordt dan gesproken van een "blessed repo": een repository waarvan we als team afspreken dat deze centraal wordt behandeld.
 
-Dit is exact hoe Azure DevOps ook werkt: Azure DevOps Repos zijn eigenlijk de "blessed repos" waarin de "ware versie" staat waar iedereen in integreert.
+Dit is exact hoe GitHub ook werkt: GitHub Repositories zijn eigenlijk de "blessed repos" waarin de "ware versie" staat waar iedereen in integreert.
 
 ## Working with Git 2
 
