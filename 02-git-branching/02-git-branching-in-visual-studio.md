@@ -16,6 +16,8 @@ Tot nu toe heeft iedereen in een eigen *repository* gewerkt. We gaan nu samen we
 1. Open via **File** -> **Open** de *map* waarin je de repository ge*clone*d hebt.
 1. Blader naar de map `02-git-branching` en bekijk de mappen en bestanden die zich hierin bevinden.
 
+> Omdat we in dit lab **samen werken in één repository** geven we bestanden en *branches* regelmatig initialen mee in de naam. Uiteraard maakt het niet uit wat de precieze initialen zijn, maar gaat het erom dat de branches en bestanden uniek te herkennen zijn.
+
 ### Doorvoeren van wijzigingen
 
 De standaard-branch die altijd in Git wordt aangemaakt (`master`), is ook hier de standaard-branch. Het idee hierachter is dat dit de centrale plek is, waarin de stabiele versies van alle ontwikkelingen samenkomen (dit wordt vaak de *collaboration branch* genoemd). Wanneer je de code dan met een *clone* ophaalt uit de Git repository, kijk je automatisch naar de meest recente stabiele versie. In Visual Studio Code zie je linksonder ook altijd in welke repository en branch je momenteel aan het werk bent.
@@ -25,7 +27,7 @@ De standaard-branch die altijd in Git wordt aangemaakt (`master`), is ook hier d
 > We gaan enkele wijzigingen aanbrengen in dit project. Naast de internetverkopen (opgevangen in `FactInternetSales`) en de reseller-verkopen (opgevangen in `FactResellerSales`) wil het management meer zicht krijgen op de verkopen aan eigen medewerkers. Vanuit het Data Warehouse-team is daarom besloten een nieuwe Fact daarvoor op te zetten: `FactEmployeeSales`.
 
 6. **Rechtsklik** op de map **src/Tables**
-6. Kies **New File**. Geef deze de naam `FactEmployeeSales.sql` en gebruik de volgende definitie:  
+6. Kies **New File**. Geef deze de naam `FactEmployeeSales-initialen.sql` en gebruik de volgende definitie:  
 
 ```sql
 CREATE TABLE [dbo].[FactEmployeeSales] (
@@ -78,8 +80,8 @@ From https://github.com/BITrainer-nl/git-github-workshop
 > git ls-files --stage -- C:\src\git-github-workshop\02-git-branching\src\Tables\NieuweTabel.sql
 > git cat-file -s e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 > git show :02-git-branching/src/Tables/NieuweTabel.sql
-remote: error: GH006: Protected branch update failed for refs/heads/master.        
-remote: error: At least 1 approving review is required by reviewers with write access.        
+remote: error: GH006: Protected branch update failed for refs/heads/master.
+remote: error: At least 1 approving review is required by reviewers with write access.
 To https://github.com/BITrainer-nl/git-github-workshop.git
  ! [remote rejected] master -> master (protected branch hook declined)
 error: failed to push some refs to 'https://github.com/BITrainer-nl/git-github-workshop.git'
@@ -91,7 +93,7 @@ Binnen deze GitHub-repository is de `master` branch *protected*. Dit is een stuk
 
 De gedachte hierachter is dat wijzigingen overal mogen plaats vinden, behalve in de `master`-branch (en eventuele release branches, die alleen "gevoed" worden vanuit `master`). Dit is in GitHub in te stellen via een **branch policy**, die je op de volgende plek kunt terugvinden bij *repositories* waar je eigenaar of *administrator* van bent:
 
-![Branch policies in Azure DevOps Portal](img/branch-policies.png)
+![Branch policies in GitHub](img/branch-policies.png)
 
 Bij de repo `BITrainer-nl/git-github-workshop` is de **branch protection** als volgt ingericht:
 
@@ -112,7 +114,7 @@ Wanneer we de commit-log zouden opvragen, zou deze er min of meer als volgt uitz
 * De lokale HEAD (dus de commit waarmee de working directory vergeleken wordt) staat op de commit met een nieuwe fact-table
 * `origin/HEAD` (dus de commit waarnaar GitHub kijkt) staat één commit eerder
 
-Om nu de lokale wijzigingen door te kunnen voeren binnen Azure gaan we de volgende drie stappen doen:
+Om nu de lokale wijzigingen door te kunnen voeren binnen GitHub gaan we de volgende drie stappen doen:
 
 * We maken de (lokale) commit ongedaan op `master`
 * We maken een nieuwe branch aan vanaf `master`
@@ -140,7 +142,7 @@ De lokale `master` branch is nu weer identiek aan de branch op GitHub, `origin/m
 
 18. Klik binnen GitHub Desktop op **Current branch**
 18. Klik **New Branch**
-18. Geef deze de naam **feature-fact-employeesales**
+18. Geef deze de naam **feature-fact-employeesales-initialen**
 18. Klik **Create Branch**
 
 ![Team Explorer venster "Create Branch"](img/team-explorer-create-branch.png)
@@ -148,24 +150,24 @@ De lokale `master` branch is nu weer identiek aan de branch op GitHub, `origin/m
 Je krijgt nu van GitHub de vraag wat je met de lokale wijzigingen moet doen. Het nieuw toegevoegde bestand staat namelijk nog steeds in je *working directory*. Je hebt twee keuzes:
 
 * **Leave my changes on master** zorgt voor een *stash*. Feitelijk zet je je wijzigingen dan nog niet in versiebeheer, maar zet je ze even apart zodat je er later mee verder kunt werken.
-* **Bring my changes to feature-fact-employeesales** laat je wijzigingen in je *working directory* staan. Wanneer je dan een *stage* en/of *commit* doorvoert binnen je nieuwe branch, komen de wijzigingen in de commit mee.
+* **Bring my changes to feature-fact-employeesales-initialen** laat je wijzigingen in je *working directory* staan. Wanneer je dan een *stage* en/of *commit* doorvoert binnen je nieuwe branch, komen de wijzigingen in de commit mee.
 
-Nadat de *branch* `feature-fact-employeesales` is aangemaakt, doet GitHub Desktop ook direct een `checkout` van de branch. Je werkt dus per direct in de nieuwe branch.
+Nadat de *branch* `feature-fact-employeesales-initialen` is aangemaakt, doet GitHub Desktop ook direct een `checkout` van de branch. Je werkt dus per direct in de nieuwe branch.
 
-22. Kies voor **Bring my changes to feature-fact-employeesales** en kies **Switch branch**
+22. Kies voor **Bring my changes to feature-fact-employeesales-initialen** en kies **Switch branch**
 
 ![Switch branch, keep changes](img/bring-changes.png)
 
-#### Push van de nieuwe branch naar Azure DevOps
+#### Push van de nieuwe branch naar GitHub
 
-De branch `feature-fact-employeesales` bestaat nu alleen nog lokaal. Om deze naar Azure DevOps te brengen, moeten we nog een **push** doen. Zorg er bij de volgende stappen voor dat je op de zojuist aangemaakte *feature branch* aan het werk bent!
+De branch `feature-fact-employeesales-initialen` bestaat nu alleen nog lokaal. Om deze naar GitHub te brengen, moeten we nog een **push** doen. Zorg er bij de volgende stappen voor dat je op de zojuist aangemaakte *feature branch* aan het werk bent!
 
-23. Maak een nieuwe **commit** binnen GitHub Desktop voor je wijzigingen binnen `feature-fact-employeesales`
+23. Maak een nieuwe **commit** binnen GitHub Desktop voor je wijzigingen binnen `feature-fact-employeesales-initialen`
 23. Klik in de titelbalk op **Publish branch**. Hiermee wordt de *branch* naar GitHub gepusht.
 
 ### Hotfix!
 
-De ontwikkeling op de branch `feature-fact-employeesales` is nog niet voltooid, maar er komt een spoedgeval tussendoor: in een poging geld te besparen is de oplossing recent verplaatst van SQL Datawarehouse naar SQL Database. Het leek dat dit goed ging, maar het blijkt dat in de tabeldefinities nog hints stonden over hoe de data opgeslagen moest worden waar SQL Database niet mee weet om te gaan.
+De ontwikkeling op de branch `feature-fact-employeesales-initialen` is nog niet voltooid, maar er komt een spoedgeval tussendoor: in een poging geld te besparen is de oplossing recent verplaatst van SQL Datawarehouse naar SQL Database. Het leek dat dit goed ging, maar het blijkt dat in de tabeldefinities nog hints stonden over hoe de data opgeslagen moest worden waar SQL Database niet mee weet om te gaan.
 
 Als devops-team besloten om de fix hiervoor (het verwijderen van de *CLUSTERED COLUMNSTORE INDEX hints*) op de standaard-manier op te lossen: een zeer kortlevende feature branch voor de hotfix. Daar zitten de volgende stappen in:
 
@@ -177,7 +179,7 @@ Als devops-team besloten om de fix hiervoor (het verwijderen van de *CLUSTERED C
 
 Hieronder staat het globale stappenplan. Mocht je in meer detail willen weten hoe je branches aanmaakt (of schakelt tussen branches) in Visual Studio, dan is dat hierboven te vinden.
 
-25. Schakel terug naar de **master** branch, en maak een nieuwe branch genaamd `hotfix-cci` aan. Zorg ervoor dat je ook op deze branch werkt.
+25. Schakel terug naar de **master** branch, en maak een nieuwe branch genaamd `hotfix-cci-initialen` aan. Zorg ervoor dat je ook op deze branch werkt.
 25. Verander de volgende tabellen. Verwijder de distributie-informatie (`WITH (CLUSTERED COLUMNSTORE INDEX, ...)`).
     * `FactCallCenter`
     * `FactCurrencyRate`
@@ -191,18 +193,18 @@ Hieronder staat het globale stappenplan. Mocht je in meer detail willen weten ho
 
 ### Pull Request
 
-We hebben nu een branch (`hotfix-cci`) aangemaakt en hier code in staan die we graag willen integreren richting de `master` branch. De standaard-manier om een branch te integreren met een andere branch is met behulp van een zogenaamd *pull request*.
+We hebben nu een branch (`hotfix-cci-initialen`) aangemaakt en hier code in staan die we graag willen integreren richting de `master` branch. De standaard-manier om een branch te integreren met een andere branch is met behulp van een zogenaamd *pull request*.
 
 26. Open de webbrowser, en browse naar [https://github.com/BITrainer-nl/git-github-workshop](https://github.com/BITrainer-nl/git-github-workshop)
 26. Schakel naar de tab **Pull Requests**
 
-GitHub laat je nu direct zien welke pull requests er momenteel actief zijn. Ook krijg je de melding dat je `hotfix-cci` kortgeleden bijgewerkt hebt, en of je hier wellicht een *pull request* mee wilt openen.
+GitHub laat je nu direct zien welke pull requests er momenteel actief zijn. Ook krijg je de melding dat je `hotfix-cci-initialen` kortgeleden bijgewerkt hebt, en of je hier wellicht een *pull request* mee wilt openen.
 
-![Pull Requests in Azure DevOps Portal](img/devops-pull-requests.png)
+![Pull Requests in GitHub](img/devops-pull-requests.png)
 
 28. We gebruiken voor nu niet de *shortcut* (die je op meerdere plekken binnen GitHub zult tegenkomen). Klik in plaats daarvan op de groene knop **New pull request**
 28. Maak een *Pull Request* aan
-    * **`hotfix-cci`** into `master`
+    * **`hotfix-cci-initialen`** into `master`
     * Title & description zijn overgenomen van de laatste commit. Als je deze zinnig hebt ingevuld hoef je hier dus niets aan te veranderen
     * Merk op dat je expliciet *reviewers* en *work items* kunt toevoegen om je Pull Request context te geven
     * Klik **Create**
@@ -222,7 +224,7 @@ Vraag aan iemand anders binnen de training om een *review* te doen. Hiervoor ope
 
 ![Merge pull request](img/merge-pr.png)
 
-31. Laat alle instellingen voor wat het is, en klik op **Confirm merge**. De Pull Request wordt nu doorgevoerd, en de wijzigingen van branch `hotfix-cci` worden doorgevoerd binnen de *collaboration* branch `master`.
+31. Laat alle instellingen voor wat het is, en klik op **Confirm merge**. De Pull Request wordt nu doorgevoerd, en de wijzigingen van branch `hotfix-cci-initialen` worden doorgevoerd binnen de *collaboration* branch `master`.
 
 Je krijgt ook direct de mogelijkheid om de branch te *verwijderen*. We gaan er later nog op in waarom je dit wel of niet zou doen, maar voor nu kiezen we ervoor om de branch - zoals voorgesteld - te verwijderen.
 
@@ -236,6 +238,6 @@ Inmiddels is de nieuwe fact table `FactEmployeeSales` ook uitvoerig getest, en k
 
 > In deze oefening heb je gezien hoe je met `feature branches` kortlevende branches gebruikt voor je ontwikkelingen. De wijzigingen die klaar stonden gedurende de ontwikkeling aan nieuwe *features* stonden bestaande doorontwikkeling of beheersmatige aanpassingen binnen de stabiele basis niet in de weg.
 >
-> In dit geval konden de twee *pull requests* (vanaf nu: PR's) achtereenvolgens uitgevoerd worden op `master`. Dit kon alleen doordat er geen conflicterende wijzigingen waren tussen `hotfix-cci` en `feature-fact-employeesales`.
+> In dit geval konden de twee *pull requests* (vanaf nu: PR's) achtereenvolgens uitgevoerd worden op `master`. Dit kon alleen doordat er geen conflicterende wijzigingen waren tussen `hotfix-cci-initialen` en `feature-fact-employeesales-initialen`.
 >
 > Wanneer je langer werkt aan een *feature branch* is de kans groot dat `master` inmiddels veranderd is. Je moet dan de *merge* eerst de andere kant op doen: de laatste versie van *master* wil je dan richting je *feature branch* brengen. Als die merge heeft plaatsgevonden kun je eenvoudig een PR van je *feature branch* naar `master` doen.
