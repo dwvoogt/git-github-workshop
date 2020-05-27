@@ -28,7 +28,7 @@ Branching in Git wordt weleens omschreven als de "killer feature". Om heel duide
 5. Minimaliseer het Git CMD of Bash venster. Zolang webui draait kun je geen gebruik maken van dit Git venster.
 6. Open een nieuw Git CMD of Bash shell, en navigeer opnieuw naar de directory van de branchdemo-repository
 
-**Wanneer Internet Explorer per abuis opent, kopieer en plak dan de URL vanuit Internet Explorer naar Brave voor een correcte weergave**
+**Wanneer Internet Explorer per abuis opent, kopieer en plak dan de URL vanuit Internet Explorer naar Chrome voor een correcte weergave**
 
 In de browser zie je de Git repository zoals deze er nu uit ziet: leeg.
 
@@ -117,12 +117,4 @@ We hebben in deze module gekeken naar branching in Git. Om daarop te kunnen focu
 
 Er zijn veel verschillende grafische interfaces voor Git geschreven - naast de hier door ons gebruikte **git webui** (een soort "plugin" voor Git) kun je ook eens kijken naar **gitk** en **git-gui**. Alles wat je hiervoor hoeft te doen is binnen *Git Bash* of *Git CMD* naar de directory van een repository te gaan, en daar resp. `gitk` of `git-gui` uit te voeren. Ook is er een lijst met veelgebruikte GUIs te vinden op de officiële Git site: [https://git-scm.com/downloads/guis](https://git-scm.com/downloads/guis).
 
-Bij het ontwikkelen van BI- of Data Platform-oplossingen op het Microsoft-platform zul je iets minder vaak van deze GUIs gebruik maken: meestal werk je met een *blessed repository* binnen Azure DevOps (waar je lokale repository een *clone* van is), en binnen Azure DevOps heb je goede grafische weergaves van wat er zich afspeelt binnen een repository.
-
-Wil je echter goed gebruik maken van versiebeheer binnen "The New Microsoft", dan zul je Git goed onder de knie moeten hebben: TFVC (Team Foundation Version Control, de "oude" TFS-manier) wordt is nog beschikbaar, maar wordt vanuit Microsoft niet meer geadviseerd:
-
-> Git is the default version control provider for new projects. You should use Git for version control in your projects unless you have a specific need for centralized version control features in TFVC.
-
-Bron: [https://docs.microsoft.com/en-gb/azure/devops/repos/tfvc/comparison-git-tfvc?view=azure-devops](https://docs.microsoft.com/en-gb/azure/devops/repos/tfvc/comparison-git-tfvc?view=azure-devops)
-
-Wanneer je on-premises BI oplossingen bouwt (SQL Server, SSAS, SSIS), dan kun je zonder Git (of met Git, maar zonder branching en merging) redelijk ver komen. Hoe meer je echter richting de cloud beweegt, hoe sterker de nieuwe oplossingen geïntegreerd zijn met Git.
+Bij het ontwikkelen met behulp van GitHub zul je iets minder vaak van deze GUIs gebruik maken: meestal werk je met een *blessed repository* binnen GitHub (waar je lokale repository een *clone* van is), en binnen GitHub heb je goede grafische weergaves van wat er zich afspeelt binnen een repository.

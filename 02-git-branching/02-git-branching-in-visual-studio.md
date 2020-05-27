@@ -1,42 +1,27 @@
-# Lab: Git Branching in Visual Studio
+# Lab: Git Branching in Visual Studio Code
 
-De ervaring van branching binnen Git brengen we in dit lab naar Visual Studio. We werken hier binnen een project waarin de `master` branch als *collaboration branch* is aangewezen. Hier wordt dus de code samengebracht en geïntegreerd die in de diverse *feature branches* is ontwikkeld. Later zullen we zien dat deze werkwijze niet alleen gebruikelijk is, maar zelfs min of meer noodzakelijk wanneer je de builds en releases van Azure Data Factory wilt automatiseren.
+De ervaring van branching binnen Git brengen we in dit lab naar Visual Studio Code. We werken hier binnen een project waarin de `master` branch als *collaboration branch* is aangewezen. Hier wordt dus de code samengebracht en geïntegreerd die in de diverse *feature branches* is ontwikkeld. Dit is een veelgebruikte aanpak en *best practice* binnen Git.
 
-Wanneer er nieuwe commits binnenkomen op de *master* branch, wordt er hier automatisch een deployment getriggerd richting de test-omgeving. In een real-world scenario zitten hier vaak nog release-branches aan vast, die alleen gevoed kunnen worden door *master*.
+Wanneer projecten naast versiebeheer ook *Continuous Integration* en *Continuous Deployment* gebruiken, is het vaak zo dat wanneer er nieuwe commits binnenkomen op de *master* branch, er automatisch een deployment getriggerd wordt richting de test-omgeving.
 
 ## Stappenplan
 
 ### Ophalen van huidig project
 
-1. Open Visual Studio / SQL Server Data Tools
-2. Open de Team Explorer
-3. Klik op "Manage connections" (de "groene stekker")  
-   ![Knop "manage connections"](img/manage-connections-groene-stekker.png)
-4. Klik (indien nodig) opnieuw op "Manage connections" (de blauwe tekst)  
-   ![Link "manage connections"](img/manage-connections-link.png)
-5. Klik Add an account...
-6. Log in met je @BITrainer.nl-account
-7. Selecteer
-   * dev.azure.com
-   * je eigen organization (bijv. "ci4bi-kvs")
-   * project **04-git-branching**
-   * repository **04-git-branching**
-8. Selecteer het pad waar je deze code wilt neerzetten, en klik "Clone"  
-   ![Dialoogvenster "Connect to a Project"](img/dialog-connect-to-a-project.png)
-9. Open **AdventureWorksDW.sln** en bekijk de oplossing
+1. Open Visual Studio Code
+2. Open via **File** -> **Open** de *map* waarin je de repository ge*clone*d hebt.
+3. Blader naar de map `02-git-branching` en bekijk de mappen en bestanden die zich hierin bevinden.
 
 ### Doorvoeren van wijzigingen
 
-De standaard-branch die altijd in Git wordt aangemaakt (`master`), is ook hier de standaard-branch. Het idee hierachter is dat dit de centrale plek is, waarin de stabiele versies van alle ontwikkelingen samenkomen (dit wordt vaak de *collaboration branch* genoemd). Wanneer je de code dan met een *clone* ophaalt uit de Git repository, kijk je automatisch naar de meest recente stabiele versie. In Visual Studio zie je rechtsonder ook altijd in welke repository en branch je momenteel aan het werk bent.
+De standaard-branch die altijd in Git wordt aangemaakt (`master`), is ook hier de standaard-branch. Het idee hierachter is dat dit de centrale plek is, waarin de stabiele versies van alle ontwikkelingen samenkomen (dit wordt vaak de *collaboration branch* genoemd). Wanneer je de code dan met een *clone* ophaalt uit de Git repository, kijk je automatisch naar de meest recente stabiele versie. In Visual Studio Code zie je linksonder ook altijd in welke repository en branch je momenteel aan het werk bent.
 
-![Indicator in Visual Studio Toolbar voor Git-branch](img/vs-branch-indicator.png)
+![Indicator in Visual Studio Code voor Git-branch](img/vs-branch-indicator.png)
 
-> We gaan enkele wijzigingen aanbrengen in dit project. Naast de internetverkopen (opgevangen in `FactInternetSales`) en de reseller-verkopen (opgevangen in `FactResellerSales`) wil het management meer zicht krijgen op de verkopen aan eigen medewerkers. Vanuit het BI-team is daarom besloten een nieuwe Fact daarvoor op te zetten: `FactEmployeeSales`.
+> We gaan enkele wijzigingen aanbrengen in dit project. Naast de internetverkopen (opgevangen in `FactInternetSales`) en de reseller-verkopen (opgevangen in `FactResellerSales`) wil het management meer zicht krijgen op de verkopen aan eigen medewerkers. Vanuit het Data Warehouse-team is daarom besloten een nieuwe Fact daarvoor op te zetten: `FactEmployeeSales`.
 
-Open `AdventureWorksDW.sln` en neem daarin de volgende stappen:
-
-1. Open *dbo* -> *Tables*
-2. Rechtsklik, en voeg een nieuwe tabel toe. Geef deze de naam `FactEmployeeSales` en gebruik de volgende definitie:  
+4. **Rechtsklik** op de map **Tables**
+5. Kies **New File**. Geef deze de naam `FactEmployeeSales.sql` en gebruik de volgende definitie:  
 
 ```sql
 CREATE TABLE [dbo].[FactEmployeeSales] (
@@ -65,10 +50,9 @@ CREATE TABLE [dbo].[FactEmployeeSales] (
 
 ```
 
-3. **Save All**
-4. Ga naar **Team Explorer**
-5. Open **Changes**
-6. Voer een *commit* door voor de bovenstaande wijziging.
+6. Sla het bestand op
+7. Ga naar **Source Control**
+8. Voer een *commit* door voor de bovenstaande wijziging.
 
 ![Changes venster](img/git-commit-changes-master.png)
 
