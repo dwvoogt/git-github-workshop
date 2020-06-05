@@ -7,4 +7,5 @@
     [StoreID]     BIGINT          NOT NULL,
     [TerritoryID] BIGINT          NOT NULL,
     [OrderDate]   DATETIME2 (7)   NOT NULL
+);
 
